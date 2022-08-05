@@ -5,7 +5,7 @@
   "remote": {
     "projectUrl": "https://amdaris.visualstudio.com/Delivery%20Toolkit",
     "testSuite": {
-      "name": "78922 - Disable blank messages in Notes"
+      "name": "78803 - Impliment pagination for active and past daily stand up/ retro pages"
     }
 
   }
