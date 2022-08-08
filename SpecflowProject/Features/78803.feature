@@ -1,12 +1,7 @@
 Feature: Pagination
 
 
-
-<<<<<<< HEAD
-
-=======
 @tc:79340
->>>>>>> be4bdf780f325adcd13d8750c4e577defd609585
 @standup @pagination @positive
 Scenario: Verify if link buttons are disabled then the list contains just 10 items
 Given  the user is logged in as a <user_role>
@@ -30,11 +25,7 @@ Examples:
 | manager              |    past      |next     |http://localhost:3000/project/1/retro|
 
 
-<<<<<<< HEAD
-
-=======
 @tc:79341
->>>>>>> be4bdf780f325adcd13d8750c4e577defd609585
 @standup @pagination @positive
 Scenario: Verify if link buttons are displayed then the list contains  0 items
 Given  the user is logged in as a <user_role>
@@ -54,11 +45,7 @@ Examples:
 | staff                |    templates |http://localhost:3000/project/1/retro|
 | manager              |    past      |http://localhost:3000/project/1/retro|
 
-<<<<<<< HEAD
-
-=======
 @tc:79342
->>>>>>> be4bdf780f325adcd13d8750c4e577defd609585
 @standup @pagination @positive
 Scenario: Verify if on the page are displayed maximum 10 items
 Given  the user is logged in as a <user_role>
@@ -76,11 +63,7 @@ Examples:
 | manager              |    templates |http://localhost:3000/project/1/retro|      31       |
 
 
-<<<<<<< HEAD
-
-=======
 @tc:79343
->>>>>>> be4bdf780f325adcd13d8750c4e577defd609585
 @standup @pagination @positive
 Scenario: Verify if the current page is active in the pagination box
 Given  the user is logged in as a <user_role>

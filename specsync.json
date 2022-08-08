@@ -15,7 +15,7 @@
       "name": "78803 - Impliment pagination for active and past daily stand up/ retro pages"
 
     }
-<<<<<<< HEAD
+
 
   },
 
@@ -26,14 +26,12 @@
       "SpecflowProject/Features/78803.feature"
 
     ]
-
-=======
   },
   "local": {
     "sourceFiles": [
       "SpecflowProject/Features/78803.feature"
     ]
->>>>>>> be4bdf780f325adcd13d8750c4e577defd609585
+
   }
 
 }
