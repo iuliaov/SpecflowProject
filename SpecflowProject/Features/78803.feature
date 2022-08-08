@@ -2,6 +2,7 @@ Feature: Pagination
 
 
 
+
 @standup @pagination @positive
 Scenario: Verify if link buttons are disabled then the list contains just 10 items
 Given  the user is logged in as a <user_role>
@@ -25,6 +26,7 @@ Examples:
 | manager              |    past      |next     |http://localhost:3000/project/1/retro|
 
 
+
 @standup @pagination @positive
 Scenario: Verify if link buttons are displayed then the list contains  0 items
 Given  the user is logged in as a <user_role>
@@ -44,6 +46,7 @@ Examples:
 | staff                |    templates |http://localhost:3000/project/1/retro|
 | manager              |    past      |http://localhost:3000/project/1/retro|
 
+
 @standup @pagination @positive
 Scenario: Verify if on the page are displyed maximum 10 items
 Given  the user is logged in as a <user_role>
@@ -59,6 +62,7 @@ Examples:
 | manager              |    active    |http://localhost:3000/project/1/retro|      19       |
 | staff                |    past      |http://localhost:3000/project/1/retro|      25       |
 | manager              |    templates |http://localhost:3000/project/1/retro|      31       |
+
 
 
 @standup @pagination @positive
