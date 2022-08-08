@@ -1,37 +1,16 @@
 ﻿{
-
   "$schema": "https://schemas.specsolutions.eu/specsync4azuredevops-config-latest.json",
 
   "compatibilityVersion": "3.3",
-
- 
-
   "remote": {
-
     "projectUrl": "https://amdaris.visualstudio.com/Delivery%20Toolkit",
-
     "testSuite": {
-
       "name": "78803 - Impliment pagination for active and past daily stand up/ retro pages"
-
     }
-
-
-  },
-
-  "local": {
-
-    "sourceFiles": [
-
-      "SpecflowProject/Features/78803.feature"
-
-    ]
   },
   "local": {
     "sourceFiles": [
       "SpecflowProject/Features/78803.feature"
     ]
-
   }
-
 }
