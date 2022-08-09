@@ -1,6 +1,7 @@
 Feature: View Mode
 
 
+@tc:79476
 Scenario: User can View Retro Template
 Given  the user is logged in as a <user_project_role>
 And the user is on <page> 
@@ -18,6 +19,7 @@ Examples:
 |  manager             |  templates   |View     |http://localhost:3000/project/1/retro|
 
 
+@tc:79477
 Scenario: User can go back from View Retro Template
 Given  the user is logged in as a <user_project_role>
 And the user is on <page> 
