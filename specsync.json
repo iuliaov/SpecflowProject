@@ -5,12 +5,12 @@
   "remote": {
     "projectUrl": "https://amdaris.visualstudio.com/Delivery%20Toolkit",
     "testSuite": {
-      "name": "78803 - Impliment pagination for active and past daily stand up/ retro pages"
+      "name": "NewNew"
     }
   },
   "local": {
     "sourceFiles": [
-      "SpecflowProject/Features/78803.feature"
+      "SpecflowProject/Features/79278.feature"
     ]
   }
 }
