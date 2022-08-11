@@ -1,6 +1,7 @@
 Feature: Keep selected user after refresh
 
 
+@tc:79636
 Scenario: Keep selected user after refresh
 Given the user1 is logged in as a <user_project_role_1>
 And the user1 joins a DS meeting
