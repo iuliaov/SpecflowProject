@@ -10,6 +10,8 @@ Feature: Voting Modal
 
 @tc:79576
 Scenario: Submit the Votes
+And the <user_id> joins a Retro meeting
+And the <user_id> is on
 And the <user_id> clicks on '+' button
 And the Voting modal is opened
 And the <user_id> clicks on <vote_button_1> state
@@ -35,25 +37,25 @@ Then the <user_id> is redirected to the Health_Check table
 And the <user_id> can see his votes in the table in 'You' collumn
 And 
 Examples:
-|user_id |vote_button_1  |vote_button_2      |
-|user1   | Good          |Improving          |
-|user1   | Good          |Constant           |
-|user1   | Good          |Getting Worse      |
-|user1   | Normal        |Improving          |
-|user1   | Normal        |Constant           |
-|user1   | Normal        |Getting Worse      |
-|user1   | Bad           |Improving          |
-|user1   | Bad           |Constant           |
-|user1   | Bad           |Getting Worse      |
-|user2   | Good          |Improving          |
-|user2   | Good          |Constant           |
-|user2   | Good          |Getting Worse      |
-|user2   | Normal        |Improving          |
-|user2   | Normal        |Constant           |
-|user2   | Normal        |Getting Worse      |
-|user2   | Bad           |Improving          |
-|user2   | Bad           |Constant           |
-|user2   | Bad           |Getting Worse      |
+|user_id |state_button_1  |status_button_1    |
+|user1   | Good           |Improving          |
+|user1   | Good           |Constant           |
+|user1   | Good           |Getting Worse      |
+|user1   | Normal         |Improving          |
+|user1   | Normal         |Constant           |
+|user1   | Normal         |Getting Worse      |
+|user1   | Bad            |Improving          |
+|user1   | Bad            |Constant           |
+|user1   | Bad            |Getting Worse      |
+|user2   | Good           |Improving          |
+|user2   | Good           |Constant           |
+|user2   | Good           |Getting Worse      |
+|user2   | Normal         |Improving          |
+|user2   | Normal         |Constant           |
+|user2   | Normal         |Getting Worse      |
+|user2   | Bad            |Improving          |
+|user2   | Bad            |Constant           |
+|user2   | Bad            |Getting Worse      |
 
 
 
@@ -79,9 +81,8 @@ And the <user_id> presses the 'Next' button
 And the <user_id> is redirected to the last page in the Voting modal
 And the <user_id> does not choose the state and status
 When the <user_id> presses the 'Submit' button
-Then the user is kept on the page
-And the <user_id> can see his votes in the table in 'You' collumn
-And 
+Then the user is kept on the last page of the voting modal
+And the user can not submit his votes 
 Examples:
 |user_id |vote_button_1  |vote_button_2      |
 |user1   | Good          |Improving          |
@@ -104,7 +105,7 @@ Examples:
 |user2   | Bad           |Getting Worse      |
 
 @tc:79578
-Scenario: The user closes the voting Modal before voting
+Scenario: Close the voting Modal before voting
 And the <user_id> clicks on '+' button
 And the Voting modal is opened
 When the user presses the 'x' button
@@ -135,7 +136,7 @@ Examples:
 | user2    |
 
 @tc:79591
-Scenario: The user moves to the next page after voting
+Scenario: Move to the next page after voting
 And the <user_id> clicks on '+' button
 And the Voting modal is opened
 And the user clicks on 'Good' status
@@ -150,7 +151,7 @@ Examples:
 | user2    |
 
 @tc:79592
-Scenario: The user clicks outside the voting modal
+Scenario: Close the voting modal by clicking outside the voting modal
 And the <user_id> clicks on '+' button
 And the Voting modal is opened
 And the user clicks on 'Good' status button
@@ -164,7 +165,7 @@ Examples:
 | user2    |
 
 @tc:79593
-Scenario: The user cannot move to the next page if he didn't vote
+Scenario: Move to the next page without voting
 And the <user_id> clicks on '+' button
 And the Voting modal is opened
 When the <user_id> presses the 'Next' button
@@ -206,7 +207,7 @@ Examples:
 | user2    |
 
 @tc:79596
-Scenario: Previous choices are saved
+Scenario: Check that previous voting choices are saved
 And the <user_id> clicks on '+' button
 And the Voting modal is opened
 And the <user_id> clicks on <vote_button_1> state
@@ -240,5 +241,3 @@ Examples:
 |user1   | Bad           |Improving          | Normal        |Getting Worse      |
 |user1   | Bad           |Constant           | Normal        |Constant           |
 |user1   | Bad           |Getting Worse      | Normal        |Improving          |
-
-
