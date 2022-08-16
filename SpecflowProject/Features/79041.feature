@@ -1,6 +1,7 @@
 Feature: Request NPS
 
 
+@tc:79925
 @standup @nps @positive
 Scenario: Pop-up appears after user exits a DS
 Given  the user is logged in as a <user_role>
@@ -14,6 +15,7 @@ Examples:
 | manager              |http://localhost:3000/project/1/daily|
 | staff                |http://localhost:3000/project/1/daily|
 
+@tc:79926
 @standup @nps @positive
 Scenario: Submit the vote in DS feedback pop-up
 Given  the user is logged in as a <user_role>
@@ -38,6 +40,7 @@ Examples:
 | manager              |http://localhost:3000/project/1/daily| 1           |
 | staff                |http://localhost:3000/project/1/daily| 1           |
 
+@tc:79927
 @standup @nps @positive
 Scenario: Change the selected score
 Given  the user is logged in as a <user_role>
@@ -55,6 +58,7 @@ Examples:
 | manager              |http://localhost:3000/project/1/daily|
 | staff                |http://localhost:3000/project/1/daily|
 
+@tc:79928
 @standup @nps
 Scenario: User abandons selection
 Given  the user is logged in as a <user_role>
@@ -73,6 +77,7 @@ Examples:
 | staff                |http://localhost:3000/project/1/daily| 5           |
 
 
+@tc:79929
 @standup @nps @positive
 Scenario: Close the voting pop-up without voting
 Given  the user is logged in as a <user_role>
@@ -90,6 +95,7 @@ Examples:
 | manager              |http://localhost:3000/project/1/daily|
 | staff                |http://localhost:3000/project/1/daily|
 
+@tc:79930
 @standup @nps
 Scenario: Click on Confirm without voting
 Given  the user is logged in as <user_role>
@@ -107,6 +113,7 @@ Examples:
 | manager              |http://localhost:3000/project/1/daily|
 | staff                |http://localhost:3000/project/1/daily|
 
+@tc:79931
 @standup @nps @positive
 Scenario: Close the voting pop-up without voting
 Given  the user is logged in as a <user_role>
@@ -124,6 +131,7 @@ Examples:
 | manager              |http://localhost:3000/project/1/daily| 5           |
 | staff                |http://localhost:3000/project/1/daily| 5           |
 
+@tc:79932
 @standup @nps @positive
 Scenario: Feedback pop-up reapears when user did not submit the vote
 Given  the user is logged in as a <user_role>
@@ -153,6 +161,7 @@ Examples:
 | staff                |http://localhost:3000/project/1/daily| 1           |
 
 
+@tc:79933
 @standup @nps @positive
 Scenario: Feedback pop-up does not reapear when user submited the vote
 Given  the user is logged in as a <user_role>
@@ -175,6 +184,7 @@ Examples:
 | manager              |http://localhost:3000/project/1/daily|4             |
 | staff                |http://localhost:3000/project/1/daily|4             |
 
+@tc:79934
 @standup @nps @positive
 Scenario: Feedback pop-up reapears 5 meetings after the user submited the vote
 Given  the user is logged in as a <user_role>
@@ -199,6 +209,7 @@ Examples:
 | manager              |http://localhost:3000/project/1/daily|
 | staff                |http://localhost:3000/project/1/daily|
 
+@tc:79935
 @standup @nps @positive
 Scenario: Close the "Thank you" pop up
 Given  the user is logged in as a <user_role>
@@ -223,6 +234,43 @@ Examples:
 | staff                |http://localhost:3000/project/1/daily|
 | manager              |http://localhost:3000/project/1/daily|
 | staff                |http://localhost:3000/project/1/daily|
+
+@tc:79940
+@standup @nps @positive
+Scenario: Pop-up stays on the page after page reload
+Given  the user is logged in as a <user_role>
+And the user is on <page>
+And the user joins a Daily Stand-Up meeting for 5 times
+And the user exits the DS for the 5th time
+And a feedback pop-up appears
+When the user reloads the web page
+Then the feedback pop-up remains on the page
+Examples:
+|  user_role           |page                                 |
+| manager              |http://localhost:3000/project/1/daily|
+| staff                |http://localhost:3000/project/1/daily|
+
+
+@tc:79941
+@standup @nps @positive
+Scenario: Submit the vote in DS feedback pop-up with DS meetings in different projects
+Given  the user is logged in as a <user_role>
+And the user is on <page>
+And the user joins 2 Daily Stand-Up meetings in Project 1
+And the user joins 2 Daily Stand-Up meetings in Project 2
+And the user exits the DS for the 5th time
+And a pop-up appears
+And the user votes with <score> nr_of_stars
+When user clicks on [Confirm] button
+Then the user is redirected to the main page
+And the following message appears on the screen "Thank you for your feedback !"
+Examples:
+|  user_role           |page                         | score       |
+| manager              |http://localhost:3000/project| 5           |
+| manager              |http://localhost:3000/project| 4           |
+| manager              |http://localhost:3000/project| 3           |
+| manager              |http://localhost:3000/project| 2           |
+| manager              |http://localhost:3000/project| 1           |
 
 
 
