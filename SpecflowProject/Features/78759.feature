@@ -240,6 +240,7 @@ Examples:
 |Manager               | Bad           |Getting Worse      | Normal        |Improving          |
 
 
+@tc:79671
 Scenario: Vote results are displayed in the table in You collumn
 And the <user_type> clicks on '+' button
 And the Voting modal is opened
@@ -288,6 +289,7 @@ Examples:
 |Manager              | Bad           |Getting Worse      | red_circle_arrow_down   |
 
 
+@tc:79672
 Scenario: Vote results are displayed in the table for Staff user
 And the <user_type_1> clicks on '+' button
 And the Voting modal is opened
@@ -318,6 +320,7 @@ Examples:
 |Staff user             | Manager               |Bad           |Constant           | red_circle_no_arrow     |
 |Staff user             | Manager               |Bad           |Getting Worse      | red_circle_arrow_down   |
 
+@tc:79673
 Scenario: Vote results are displayed in the table for Manager user
 And the <user_type_1> clicks on '+' button
 And the Voting modal is opened
@@ -349,6 +352,7 @@ Examples:
 |Staff user             | Manager               |Bad           |Getting Worse      | red_circle_arrow_down   |
 
 
+@tc:79674
 Scenario: Submit the vote with various voting combinations
 And the <user_type> clicks on '+' button
 And the Voting modal is opened
@@ -389,6 +393,7 @@ Examples:
 |Staff user             | Manager               |Bad           |Improving          | red_circle_arrow_up     |Good          |Constant           | green_circle_no_arrow   |Normal        |Constant           | yellow_circle_no_arrow  |Bad           |Improving          | red_circle_arrow_up     |Bad           |Constant           | red_circle_no_arrow     |
 
 
+@tc:79675
 Scenario: Reveal Results after closing the window
 And the <user_type> clicks on '+' button
 And the Voting modal is opened
@@ -422,3 +427,44 @@ Examples:
 |Manager              | Bad           |Improving          |
 |Manager              | Bad           |Constant           |
 |Manager              | Bad           |Getting Worse      |
+
+@tc:79916
+Scenario: Submit the vote with various voting combinations
+And the <user_type> clicks on '+' button
+And the Voting modal is opened
+And the <user_type> clicks on <state_1> state button
+And the <user_type> clicks on <status_1> status button
+And the <user_type> presses the 'Next' button
+And the <user_type> is redirected to the next page in the Voting modal
+And the <user_type> clicks on <state_2> state button
+And the <user_type> clicks on <status_2> status button
+And the <user_type> presses the 'Next' button
+And the <user_type> is redirected to the next page in the Voting modal
+And the <user_type> clicks on <state_3> state button
+And the <user_type> clicks on <status_3> status button
+And the <user_type> presses the 'Next' button
+And the <user_type> is redirected to the next page in the Voting modal
+And the <user_type> clicks on <state_4> state button
+And the <user_type> clicks on <status_4> status button
+And the <user_type> presses the 'Next' button
+And the <user_type> is redirected to the next page in the Voting modal
+And the <user_type> clicks on <state_5> state button
+And the <user_type> clicks on <status_5> status button
+When the <user_type> presses the 'Submit' button
+Then the <user_type> is redirected to the Health_Check template page
+And the <user_type> can see his votes in 'You' collumn in the following order: <result_1>, <result_2>, <result_1>, <result_3>, <result_4>, <result_5>
+Examples:
+|user_type_1            |user_type_2            |state_1       |status_1           | result_1                |state_2       |status_2           | result_2                |state_3       |status_3           | result_3                |state_4       |status_4           | result_4                |state_5       |status_5           | result_5                |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Good          |Constant           | green_circle_no_arrow   |Good          |Getting Worse      | green_circle_arrow_down |Bad           |Improving          | red_circle_arrow_up     |Normal        |Improving          | yellow_circle_arrow_up  |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Good          |Constant           | green_circle_no_arrow   |Good          |Getting Worse      | green_circle_arrow_down |Bad           |Improving          | red_circle_arrow_up     |Normal        |Constant           | yellow_circle_no_arrow  |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Good          |Constant           | green_circle_no_arrow   |Good          |Getting Worse      | green_circle_arrow_down |Normal        |Constant           | yellow_circle_no_arrow  |Normal        |Improving          | yellow_circle_arrow_up  |
+|Staff user             | Manager               |Normal        |Constant           | yellow_circle_no_arrow  |Good          |Constant           | green_circle_no_arrow   |Normal        |Constant           | yellow_circle_no_arrow  |Bad           |Improving          | red_circle_arrow_up     |Normal        |Improving          | yellow_circle_arrow_up  |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Good          |Constant           | green_circle_no_arrow   |Bad           |Constant           | red_circle_no_arrow     |Bad           |Improving          | red_circle_arrow_up     |Normal        |Improving          | yellow_circle_arrow_up  |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Good          |Constant           | green_circle_no_arrow   |Good          |Getting Worse      | green_circle_arrow_down |Bad           |Improving          | red_circle_arrow_up     |Bad           |Constant           | red_circle_no_arrow     |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Bad           |Improving          | red_circle_arrow_up     |Good          |Getting Worse      | green_circle_arrow_down |Normal        |Constant           | yellow_circle_no_arrow  |Normal        |Improving          | yellow_circle_arrow_up  |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Good          |Constant           | green_circle_no_arrow   |Normal        |Constant           | yellow_circle_no_arrow  |Bad           |Improving          | red_circle_arrow_up     |Normal        |Improving          | yellow_circle_arrow_up  |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Bad           |Constant           | red_circle_no_arrow     |Good          |Getting Worse      | green_circle_arrow_down |Normal        |Getting Worse      | yellow_circle_arrow_down|Normal        |Improving          | yellow_circle_arrow_up  |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Good          |Constant           | green_circle_no_arrow   |Good          |Getting Worse      | green_circle_arrow_down |Bad           |Improving          | red_circle_arrow_up     |NGood         |Getting Worse      | green_circle_arrow_down |
+|Staff user             | Manager               |Good          |Improving          | green_circle_arrow_up   |Good          |Constant           | green_circle_no_arrow   |Good          |Getting Worse      | green_circle_arrow_down |Normal        |Constant           | yellow_circle_no_arrow  |Normal        |Constant           | yellow_circle_no_arrow  |
+|Staff user             | Manager               |Bad           |Improving          | red_circle_arrow_up     |Good          |Constant           | green_circle_no_arrow   |Normal        |Constant           | yellow_circle_no_arrow  |Bad           |Improving          | red_circle_arrow_up     |Bad           |Constant           | red_circle_no_arrow     |
+
