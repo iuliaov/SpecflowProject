@@ -235,5 +235,42 @@ Examples:
 | manager              |http://localhost:3000/project/1/daily|
 | staff                |http://localhost:3000/project/1/daily|
 
+@tc:79940
+@standup @nps @positive
+Scenario: Pop-up stays on the page after page reload
+Given  the user is logged in as a <user_role>
+And the user is on <page>
+And the user joins a Daily Stand-Up meeting for 5 times
+And the user exits the DS for the 5th time
+And a feedback pop-up appears
+When the user reloads the web page
+Then the feedback pop-up remains on the page
+Examples:
+|  user_role           |page                                 |
+| manager              |http://localhost:3000/project/1/daily|
+| staff                |http://localhost:3000/project/1/daily|
+
+
+@tc:79941
+@standup @nps @positive
+Scenario: Submit the vote in DS feedback pop-up with DS meetings in different projects
+Given  the user is logged in as a <user_role>
+And the user is on <page>
+And the user joins 2 Daily Stand-Up meetings in Project 1
+And the user joins 2 Daily Stand-Up meetings in Project 2
+And the user exits the DS for the 5th time
+And a pop-up appears
+And the user votes with <score> nr_of_stars
+When user clicks on [Confirm] button
+Then the user is redirected to the main page
+And the following message appears on the screen "Thank you for your feedback !"
+Examples:
+|  user_role           |page                         | score       |
+| manager              |http://localhost:3000/project| 5           |
+| manager              |http://localhost:3000/project| 4           |
+| manager              |http://localhost:3000/project| 3           |
+| manager              |http://localhost:3000/project| 2           |
+| manager              |http://localhost:3000/project| 1           |
+
 
 
