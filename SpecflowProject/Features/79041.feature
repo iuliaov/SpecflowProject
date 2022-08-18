@@ -23,7 +23,7 @@ And the user is on <page>
 And the user joins a Daily Stand-Up meeting for 5 times
 And the user exits the DS for the 5th time
 And a pop-up appears
-And the user votes with <score> nr_of_stars
+And the user votes with <score> stars
 When user clicks on [Confirm] button
 Then the user is redirected to the main page
 And the following message appears on the screen "Thank you for your feedback !"
@@ -60,13 +60,13 @@ Examples:
 
 @tc:79928
 @standup @nps
-Scenario: User abandons selection
+Scenario: User abandons selection in feedback pop-up
 Given  the user is logged in as a <user_role>
 And the user is on <page>
 And the user joins a Daily Stand-Up meeting for 5 times
 And the user exits the DS for the 5th time
 And a pop-up appears
-And the user votes with <score> nr_of_stars
+And the user votes with <score> stars
 When user clicks outside the feedback pop-up
 Then the user is redirected to the main page
 And the feedback is not sent
@@ -133,20 +133,16 @@ Examples:
 
 @tc:79932
 @standup @nps @positive
-Scenario: Feedback pop-up reapears when user did not submit the vote
+Scenario: Feedback pop-up does not reapear when user did not submit the vote
 Given  the user is logged in as a <user_role>
 And the user is on <page>
 And the user joins a Daily Stand-Up meeting for 5 times
 And the user exits the DS for the 5th time
-And a pop-up appears
-And the user closes the window without sending feedback
+And the user closes the feedback pop-up without sending feedback
 And the user joins a DS meeting again
 When the user exits the meeting
-Then a pop-up appears
-And the user votes with <score> nr_of_stars
-And user clicks on [Confirm] button
-And the user is redirected to the main page
-And the following message appears on the screen "Thank you for your feedback !"
+Then the user is redirected to the main page
+And no pop-up appears on the screen
 Examples:
 |  user_role           |page                                 | score       |
 | manager              |http://localhost:3000/project/1/daily| 5           |
