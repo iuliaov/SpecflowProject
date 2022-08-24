@@ -5,8 +5,17 @@
   "remote": {
     "projectUrl": "https://amdaris.visualstudio.com/Delivery%20Toolkit",
     "testSuite": {
-      "name": "78803 - Impliment pagination for active and past daily stand up/ retro pages"
+      "name": "Daily Stand-up Timer buttons functionality"
     }
+
+  },
+  "local": {
+
+    "sourceFiles": [
+
+      "SpecflowProject/Features/dailyTimer.feature"
+
+    ]
 
   }
 }
