@@ -39,19 +39,6 @@ Examples:
 |   staff                | daily stand-up  |
 
 @invite_link @positive
-Scenario: Any user can access the link
-Given the user is logged in as a <user_project_role>
-And the user has the invite link copied on the clipboard
-When the user clicks on the invite link
-Then the user is redirected on the <page> meeting page
-Examples:
-|  user_project_role     | page            |
-|   manager              | retro           |
-|   manager              | daily stand-up  |
-|   staff                | retro           |
-|   staff                | daily stand-up  |
-
-@invite_link @positive
 Scenario: Access series of the same DS meetings with the same link
 Given the user is logged in as a <user_project_role>
 And the user has the invite link copied on the clipboard
@@ -60,7 +47,6 @@ And the user clicks on the invite link
 And the user joins the DS meeting
 When the user clicks on the same link, on the next day
 Then the user joins the same DS event as on the day before
-
 Examples:
 |  user_project_role     |
 |   manager              |
@@ -106,6 +92,7 @@ And a pop-up appears with the message: "Meeting has not started yet"
 And the user keeps the page active
 Then the page reloads when 09:59 minutes are left before the start of the meeting
 And the user is redirected to the <event_type> meeting
+And all input is disabled
 Examples:
 | event_type      | nr_of_minutes |
 | retro           | 11            |
@@ -191,8 +178,8 @@ And the templates are in READ mode only
 And the user keeps the page active
 When it is the start time of the meeting
 Then the meeting starts 
+And the user inserts his name in the dedicated box
 And the user can vote in the Ice Breaking template 
-
 Examples:
 |  user_project_role  | event_type | nr_of_minutes |
 |   staff             | retro      | 5             |
@@ -204,8 +191,8 @@ Given the user is logged in with staff permissions
 And the user has an invite link for <event_type> event
 When the user accesses the invite link <nr_of_minutes> minutes after the start time
 Then the user is redirected to the <event_type> meeting
-And the user can see the timer going on
-And the user can write a chatline in Notes
+And the user inserts 'Participant1' name in the name box
+And the inserted name is added to the spinning wheel
 Examples:
 |  user_project_role  | event_type      | nr_of_minutes |
 |   staff             | daily stand-up  | 10            |
@@ -217,7 +204,8 @@ Scenario: Access the retro meeting link with staff permissions after the beginni
 Given the user is logged in with staff permissions
 And the user has an invite link for <event_type> event
 When the user accesses  <event_type> meeting
-And the user can vote in the Ice Breaking template
+And the user inserts 'Participant1' name in the name box
+Then the user is redirected to the active template
 Examples:
 |  user_project_role  | event_type | nr_of_minutes |
 |   staff             | retro      | 5             |
@@ -236,11 +224,6 @@ Examples:
 |  user_project_role  | event_type      |
 |   staff             | daily stand-up  |
 |   staff             | retro           |
-
-
-
-
-
 
 
 
