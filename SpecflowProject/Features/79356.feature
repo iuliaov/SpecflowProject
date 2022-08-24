@@ -1,5 +1,6 @@
 Feature: Invite Link
 
+@tc:80251
 @invite_link @positive
 Scenario: Generate the invite link
 Given the user is logged in as a <user_project_role>
@@ -14,6 +15,7 @@ Examples:
 |   manager              | retro           |
 |   manager              | daily stand-up  |
 
+@tc:80252
 @invite_link
 Scenario: Staff user can not see the invite button
 Given the user is logged in as a <user_project_role>
@@ -25,6 +27,7 @@ Examples:
 |   staff                | daily stand-up  |
 
 
+@tc:80253
 @invite_link @positive
 Scenario: Any user can access the link
 Given the user is logged in as a <user_project_role>
@@ -38,6 +41,7 @@ Examples:
 |   staff                | retro           |
 |   staff                | daily stand-up  |
 
+@tc:80254
 @invite_link @positive
 Scenario: Access series of the same DS meetings with the same link
 Given the user is logged in as a <user_project_role>
@@ -52,6 +56,7 @@ Examples:
 |   manager              |
 |   staff                |
 
+@tc:80255
 @invite_link @positive
 Scenario: Retro events have different invite links
 Given the user is logged in as a manager
@@ -59,6 +64,7 @@ And the user has two retrospective meetings created for the same project
 When the user copies the invite links on the clipboard
 Then the links are different
 
+@tc:80256
 @invite_link @positive
 Scenario: Estimation events have different invite links
 Given the user is logged in as a manager
@@ -66,6 +72,7 @@ And the user has two estimation meetings created for the same project
 When the user copies the invite links on the clipboard
 Then the links are different
 
+@tc:80257
 @invite_link @positive
 Scenario: Access the link with staff permissions <nr_of_minutes> before the event starts
 Given the user is logged in with staff permissions
@@ -82,6 +89,7 @@ Examples:
 | daily stand-up  | 11            |
 | daily stand-up  | 60            |
 
+@tc:80258
 @invite_link @positive
 Scenario: Access the link with staff permissions <nr_of_minutes> before the event starts, the page is kept active
 Given the user is logged in with staff permissions
@@ -98,6 +106,7 @@ Examples:
 | retro           | 11            |
 | daily stand-up  | 11            |
 
+@tc:80259
 @invite_link @positive
 Scenario: Access the DS meeting link with staff permissions <nr_of_minutes> minutes before the beginning of the event
 Given the user is logged in with staff permissions
@@ -112,6 +121,7 @@ Examples:
 |   staff             | daily stand-up  | 5             |
 |   staff             | daily stand-up  | 1             |
 
+@tc:80260
 @invite_link @positive
 Scenario: Access the retro meeting link with staff permissions <nr_of_minutes> minutes before the beginning of the event
 Given the user is logged in with staff permissions
@@ -127,6 +137,7 @@ Examples:
 |   staff             | retro      | 5             |
 |   staff             | retro      | 1             |
 
+@tc:80261
 @invite_link @positive
 Scenario: Access the <event_type> meeting link with manager permissions before the beginning of the event
 Given the user is logged in with manager permissions
@@ -151,6 +162,7 @@ Examples:
 | daily stand-up | 1             |
 
 
+@tc:80262
 @invite_link @positive
 Scenario: Access the DS meeting link with staff permissions <nr_of_minutes> minutes before the beginning of the event, the page is kept active
 Given the user is logged in with staff permissions
@@ -168,6 +180,7 @@ Examples:
 |   staff             | daily stand-up  | 5             |
 |   staff             | daily stand-up  | 1             |
 
+@tc:80263
 @invite_link @positive
 Scenario: Access the retro meeting link with staff permissions <nr_of_minutes> minutes before the beginning of the event, the page is kept active
 Given the user is logged in with staff permissions
@@ -185,6 +198,7 @@ Examples:
 |   staff             | retro      | 5             |
 |   staff             | retro      | 1             |
 
+@tc:80264
 @invite_link @positive
 Scenario: Access the DS meeting link with staff permissions after the beginning of the event
 Given the user is logged in with staff permissions
@@ -199,6 +213,7 @@ Examples:
 |   staff             | daily stand-up  | 5             |
 |   staff             | daily stand-up  | 1             |
 
+@tc:80265
 @invite_link @positive
 Scenario: Access the retro meeting link with staff permissions after the beginning of the event
 Given the user is logged in with staff permissions
@@ -212,6 +227,7 @@ Examples:
 |   staff             | retro      | 1             |
 
 
+@tc:80266
 @invite_link @positive
 Scenario: Access an event link after the event has ended
 Given the user is logged in with <user_project_role> permissions
