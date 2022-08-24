@@ -5,12 +5,12 @@
   "remote": {
     "projectUrl": "https://amdaris.visualstudio.com/Delivery%20Toolkit",
     "testSuite": {
-      "name": "NewNew"
+      "name": "78996 - View functionality"
     }
   },
   "local": {
     "sourceFiles": [
-      "SpecflowProject/Features/79278.feature"
+      "SpecflowProject/Features/78996.feature"
     ]
   }
 }
