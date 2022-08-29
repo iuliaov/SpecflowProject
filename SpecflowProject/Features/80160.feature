@@ -44,9 +44,9 @@ Examples:
 Scenario: Create a new project with an existing name
 Given the user is logged in with admin credentials
 And the user is on the projects page
-And a project with "Project1" name already exists
+And a project with "Project 1" name already exists
 When the user clicks [New project]
-And the user types "Project1" name in the project name input
+And the user types "Project 1" name in the project name input
 And the user searches for "manager" in the add Delivery Lead searchbox
 And the user selects the desired Delivery Lead
 And user cliks [Add] button
@@ -60,12 +60,26 @@ Scenario: The admin user can not access the created project
 Given the user is logged in with admin credentials
 And the user is on the projects page
 And the user clicks [New project]
-And the user types "Project1" name in the project name input
+And the user types "New project" name in the project name input
 And the user adds the Delivery Lead "manager@amdaris.com"
 And the user clicks on [Create] button
 And the project is created
 When the user returns on projects
 Then the user can not find "New project" project on projects page
+
+@tc:80372
+Scenario: The manager user can access the created project
+Given the user1 is logged in with admin credentials
+And user2 is logged in with manager credentials
+And user2 has the email address "manager@amdaris.com"
+And the user1 is on the projects page
+And the user1 clicks [New project]
+And the user1 types "New project" name in the project name input
+And the user1 adds the Delivery Lead "manager@amdaris.com" to the project
+And the user clicks on [Create] button
+And the project is successfully created
+When the user2 moves to projects page
+Then the user can find "New project" project on projects page
 
 @tc:80368
 Scenario: Press Back button or refresh page while creating a project
@@ -78,7 +92,7 @@ And adds the Delivery Lead
 When the user press the <button> button
 Then the user is redirected to the main page
 And the project is not created
-And when the fields in the create form are reset
+And the fields in the create form are reset
 Examples:
 |button      |
 |Back        |
