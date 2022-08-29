@@ -1,5 +1,6 @@
 Feature: Admin Project Management
 
+@tc:80363
 Scenario: "New project" button - visibility
 Given the user is logged in as <user_project_role>
 When the user accesses the projects page
@@ -10,6 +11,7 @@ Examples:
 |Manager          |not visible|
 
 
+@tc:80364
 Scenario: Create a new project
 Given the user is logged in with admin credentials
 And the user is on the projects page
@@ -22,6 +24,7 @@ When the user clicks on [Create] button
 Then the project is created
 And the following message is displayed: "The project was created successfully!"
 
+@tc:80365
 Scenario: Create a new project without adding the name or the email
 Given the user is logged in with admin credentials
 And the user is on the projects page
@@ -37,6 +40,7 @@ Examples:
 |------------|manager  |The project name is invalid!                                       |
 |------------|---------|The project name is invalid and the email provided does not exist! |
 
+@tc:80366
 Scenario: Create a new project with an existing name
 Given the user is logged in with admin credentials
 And the user is on the projects page
@@ -51,6 +55,7 @@ And the user clicks [Create] button
 Then the error message "A project with this name already exists!" is displayed
 And the project is not created
 
+@tc:80367
 Scenario: The admin user can not access the created project
 Given the user is logged in with admin credentials
 And the user is on the projects page
@@ -62,6 +67,7 @@ And the project is created
 When the user returns on projects
 Then the user can not find "New project" project on projects page
 
+@tc:80368
 Scenario: Press Back button or refresh page while creating a project
 Given the user is logged in with admin credentials
 And the user is on the projects page
