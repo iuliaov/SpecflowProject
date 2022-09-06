@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +29,17 @@ namespace SpecflowProject.Steps
             options.AddArguments(new string[2] { "--start-maximized", "--incognito" });
             _driverHelper._driver = new ChromeDriver(options);
             //_driverHelper._driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-            _driverHelper._driver.Navigate().GoToUrl("https://delivery-toolkit.azurewebsites.net/");
+            _driverHelper._driver.Navigate().GoToUrl("https://qa-delivery-toolkit.azurewebsites.net");
             _driverHelper._wait = new WebDriverWait(_driverHelper._driver, TimeSpan.FromSeconds(10));
            // _driverHelper._wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
         }
 
+        [AfterScenario("@deleteDailyMeeting", Order = 1)]
+        public void DeleteOpportunity()
+        {
+            string dailyTitle=CreateDailySteps.dailyTitle;
+            _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"(//div[.='{dailyTitle}']/parent::li//button)[2]"))).Click();
+            _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//button[@class='ant-btn ant-btn-primary'])[2]"))).Click();
+        }
     }
 }

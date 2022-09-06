@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 
 namespace SpecflowProject.POM
@@ -18,11 +19,22 @@ namespace SpecflowProject.POM
         private IWebElement _nextPage => _driverHelper._driver.FindElement(By.XPath("//li[@title='Next Page']"));
         private IWebElement _previousPage => _driverHelper._driver.FindElement(By.XPath("//li[@title='Previous Page']"));
 
+       // (//div[.='Framework Test']/parent::li//button)[1]  join button
+
         public void ClickCreateDaily()
         {
             _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//button[@type='button'])[1]"))).Click();
         }
 
+        public void AssertDailyCreated()
+        {
+            bool actual = _driverHelper._driver.FindElement(By.XPath("//div[.='Framework Test']")).Displayed;
+            Assert.IsTrue(actual);
+        }
 
+        public void JoinDailyMeeting(string input)
+        {
+            _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"(//div[.='{input}']/parent::li//button)[1]"))).Click();
+        }
     }
 }

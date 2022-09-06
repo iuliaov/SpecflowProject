@@ -20,22 +20,22 @@ namespace SpecflowProject.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("CreateDaily")]
-    public partial class CreateDailyFeature
+    [NUnit.Framework.DescriptionAttribute("DailyStandUpMeeting")]
+    public partial class DailyStandUpMeetingFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "CreateDaily.feature"
+#line 1 "DailyStandUpMeeting.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "CreateDaily", "Create daily stand-up", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "DailyStandUpMeeting", "\tSimple calculator for adding two numbers", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,14 +74,14 @@ namespace SpecflowProject.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create valid Daily Stand-up")]
-        [NUnit.Framework.CategoryAttribute("deleteDailyMeeting")]
-        public void CreateValidDailyStand_Up()
+        [NUnit.Framework.DescriptionAttribute("Daily stand-up notes")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
+        public void DailyStand_UpNotes()
         {
             string[] tagsOfScenario = new string[] {
-                    "deleteDailyMeeting"};
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create valid Daily Stand-up", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Daily stand-up notes", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -96,38 +96,16 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("User accessed project number \"1\" in with \"manager\" credetials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.And("User clicks Create Daily-Meeting button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("User clicks Join button next to \"Framework Test\" daily meeting", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "event_name",
-                            "notes",
-                            "timer",
-                            "hours",
-                            "minutes",
-                            "date",
-                            "time"});
-                table1.AddRow(new string[] {
-                            "Framework Test",
-                            "check",
-                            "check",
-                            "01",
-                            "12",
-                            "2022-09-23",
-                            "01:01:01"});
 #line 8
- testRunner.When("User fills in the Create Daily Meeting form with valid data", ((string)(null)), table1, "When ");
+ testRunner.When(@"User inserts in notes section ""Yo, I'll tell you what I want, what I really, really want So tell me what you want, what you really, really want I'll tell you what I want, what I really, really want So tell me what you want, what you really, really want I wanna (Hey!), I wanna (Hey!), I wanna (Hey!), I wanna (Hey!) I wanna really, really, really wanna zig-a-zig, ah""", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
- testRunner.And("User selects \"User #1\" and \"User #2\" and \"User #3\" as participants", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 9
+ testRunner.And("User clicks send", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 12
- testRunner.And("User selects \"Monday\" and \"Tuesday\" as occurence", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 13
- testRunner.And("User clicks Create", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 14
- testRunner.Then("The meeting is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 10
+ testRunner.Then("The message is sent", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

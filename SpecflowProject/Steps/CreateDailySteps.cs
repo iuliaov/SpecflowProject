@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SpecflowProject.POM;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,15 @@ namespace SpecflowProject.Steps
         {
             _driverHelper = driver;
             _driverHelper._wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-
         }
+
+        public static string dailyTitle="";
+
         [Given(@"User accessed project number ""(.*)"" in with ""(.*)"" credetials")]
         public void GivenUserAccessedProjectNumberInWithCredetials(int p0, string p1)
         {
             LoginPage loginPage = new LoginPage(_driverHelper);
-            loginPage.Login(p1,p0);
+            loginPage.Login(p1, p0);
         }
 
         [Given(@"User clicks Create Daily-Meeting button")]
@@ -46,13 +49,15 @@ namespace SpecflowProject.Steps
             string timer = data.timer;
             string hours = data.hours.ToString();
             string minutes = data.minutes.ToString();
+            dailyTitle = event_name;
             Thread.Sleep(1000);
             CreateDailyForm createDailyForm = new CreateDailyForm(_driverHelper);
             createDailyForm.InsertTitle(event_name);
             createDailyForm.CheckNotes(notes);
             createDailyForm.CheckTimer(timer);
-            Thread.Sleep(1000);
             createDailyForm.InsertDuration(hours, minutes);
+            createDailyForm.InsertDate();
+            createDailyForm.InsertTime();
         }
 
         [When(@"User selects ""(.*)"" and ""(.*)"" and ""(.*)"" as participants")]
@@ -82,8 +87,10 @@ namespace SpecflowProject.Steps
         [Then(@"The meeting is created")]
         public void ThenTheMeetingIsCreated()
         {
-            //ScenarioContext.Current.Pending();
-        }
+            DailyStandUpPage dailyStandUpPage = new DailyStandUpPage(_driverHelper);
+            Thread.Sleep(1000);
+            dailyStandUpPage.AssertDailyCreated();
 
+        }
     }
 }

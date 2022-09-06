@@ -33,8 +33,8 @@ namespace SpecflowProject.POM
 
         public void InsertTitle(string title)
         {
-           // _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//input[@placeholder='Event name']"))).SendKeys(title);
-            _eventName.WaitAndType(title, _driverHelper._wait);
+           _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//input[@placeholder='Event name']")));
+           _eventName.WaitAndType(title, _driverHelper._wait);
         }
 
         public void CheckNotes(string input)
@@ -49,22 +49,48 @@ namespace SpecflowProject.POM
         {
             if (input != "check")
             {
-                _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[3]/div/div/div/div/label/span[1]/input"))).Click();
+               // _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[3]/div/div/div/div/label/span[1]/input"))).Click();
 
-               //_timerCheckbox.WaitAndClick(_driverHelper._wait);
+                By.XPath("//div[3]/div/div/div/div/label/span[1]/input").WaitAndClick(_driverHelper._wait);
             }
         }
         public void InsertDuration(string hours, string minutes)
         {
             _hourInput.ClearAndType(hours, _driverHelper._wait);
+            _hourInput.SendKeys(Keys.Tab);
+
             _minuteInput.ClearAndType(minutes, _driverHelper._wait);
+            _minuteInput.SendKeys(Keys.Enter);
+        }
+
+        // //span[@aria-label='calendar']   calendar field
+        // //a[.='Today'] date today
+
+        // //span[@aria-label='clock-circle'] time field
+        //(//div[.='01'])[1] hours
+        // (//div[.='01'])[2] minutes
+        // (//div[.='01'])[2] seconds
+        // //span[.='OK']
+        // //a[.='Now'] time now
+
+        public void InsertDate()
+        {
+            _driverHelper._driver.FindElement(By.XPath("//input[@id='date']")).SendKeys("2022-09-23");
+            _driverHelper._driver.FindElement(By.XPath("//td[@title='2022-09-23']")).WaitAndClick(_driverHelper._wait);
+
+        }
+
+        public void InsertTime()
+        {
+            _driverHelper._driver.FindElement(By.XPath("//input[@id='time']")).SendKeys("10:04:00");
+            _driverHelper._driver.FindElement(By.XPath("//span[.='OK']")).WaitAndClick(_driverHelper._wait);
         }
         public void SelectParticipant(string input)
         {
             // _participantsField.WaitAndType(input, _driverHelper._wait);
             // _driverHelper._driver.FindElement(By.XPath($"(//div[.='{input}'])[1]")).Click();
-            _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//div[@class='ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix'])[1]"))).Click();
-            _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"(//div[.='{input}'])[1]"))).Click();
+            By.XPath("(//div[@class='ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix'])[1]").WaitAndClick(_driverHelper._wait);
+            By.XPath($"(//div[.='{input}'])[1]").WaitAndClick(_driverHelper._wait);
             Actions actions = new Actions(_driverHelper._driver);
             actions.ContextClick(_driverHelper._driver.FindElement(By.XPath("//form"))).Perform();
         }
@@ -73,17 +99,9 @@ namespace SpecflowProject.POM
         {
            // _occurenceField.WaitAndType(input, _driverHelper._wait);
             // _driverHelper._driver.FindElement(By.XPath($"(//div[.='{input}'])[1]")).Click();
-            _driverHelper._wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("(//div[@class='ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix'])[2]"))).Click();
+            By.XPath("(//div[@class='ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix'])[2]").WaitAndClick(_driverHelper._wait);
             By.XPath($"(//div[.='{input}'])[1]").WaitAndClick(_driverHelper._wait);
         }
-
-       // //a[.='Today'] date today
-
-       //(//div[.='01'])[1] hours
-       // (//div[.='01'])[2] minutes
-       // (//div[.='01'])[2] seconds
-       // //span[.='OK']
-       // //a[.='Now'] time now
 
         public void ClickCreate()
         {
