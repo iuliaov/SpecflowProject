@@ -9,7 +9,7 @@ And the user can see the [Invite] button next to an active event
 And the button is visible
 When user clicks on [Invite] button
 Then the link is copied to the clipboard
-And the user sees a text notification saying that the link is copied
+And the user sees a text notification "Copying to clipboard was successful!"
 Examples:
 |  user_project_role     | page            |
 |   manager              | retro           |
@@ -67,7 +67,7 @@ Then the links are different
 @tc:80256
 @invite_link @positive
 Scenario: Estimation events have different invite links
-Given the user is logged in as a manager
+Given the user is logged in with manager permissions
 And the user has two estimation meetings created for the same project
 When the user copies the invite links on the clipboard
 Then the links are different
