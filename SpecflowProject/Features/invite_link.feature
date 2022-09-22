@@ -223,6 +223,7 @@ Examples:
 | daily stand-up  |
 | retro           |
 
+@tc:81728
 @invite_link
 Scenario: The participant leaves the meeting
 Given the user acceses an invite link for <event_type> event
